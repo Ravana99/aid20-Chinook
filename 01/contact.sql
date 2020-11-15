@@ -1,4 +1,4 @@
-create or replace view Contact(FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email) as
-(select FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email from Customer)
+create or replace view Contact(CustomerEmployeeId, Type, FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email, EmployeeToReach) as
+(select CustomerId, 'Customer', FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email, SupportRepId from Customer)
 union
-(select FirstName, LastName, "Chinook Corporation", Address, City, State, Country, PostalCode, Phone, Fax, Email from Employee);
+(select EmployeeId, 'Employee', FirstName, LastName, 'Chinook Corporation', Address, City, State, Country, PostalCode, Phone, Fax, Email, ReportsTo from Employee);
