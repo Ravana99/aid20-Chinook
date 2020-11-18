@@ -6,7 +6,9 @@ use Chinook_dw;
 create table dim_track (
     TrackId int,
     TrackName varchar(255),
+    AlbumId int,
     AlbumTitle varchar(255),
+    ArtistId int,
     ArtistName varchar(255),
     primary key (TrackId)
 );
@@ -21,10 +23,10 @@ create table dim_customer (
 
 create table dim_time (
 	TimeId datetime,
-	YearId int,
-	MonthId int,
-	MonthName varchar(255),
     DayId int,
+    MonthId int,
+	MonthName varchar(255),
+	YearId int,
 	primary key (TimeId)
 );
 
