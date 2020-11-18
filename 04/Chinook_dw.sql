@@ -22,10 +22,9 @@ create table dim_customer (
 create table dim_time (
 	TimeId datetime,
 	YearId int,
-	QtrId int,
-	QtrName varchar(255),
 	MonthId int,
 	MonthName varchar(255),
+    DayId int,
 	primary key (TimeId)
 );
 
