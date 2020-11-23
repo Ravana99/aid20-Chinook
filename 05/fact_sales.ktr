@@ -624,6 +624,66 @@
     </GUI>
   </step>
   <step>
+    <name>Database lookup</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>Chinook_dw</connection>
+    <cache>N</cache>
+    <cache_load_all>N</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>Chinook_dw</schema>
+      <table>dim_customer</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>CustomerId</name>
+        <field>CustomerId</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>InvoiceDate</name>
+        <field>Date_from</field>
+        <condition>&lt;=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>InvoiceDate</name>
+        <field>Date_to</field>
+        <condition>&gt;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>CustomerKey</name>
+        <rename>CustomerKey</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Insert / update</name>
     <type>InsertUpdate</type>
     <description/>
@@ -683,8 +743,8 @@
         <update>Y</update>
       </value>
       <value>
-        <name>CustomerId</name>
-        <rename>CustomerId</rename>
+        <name>CustomerKey</name>
+        <rename>CustomerKey</rename>
         <update>Y</update>
       </value>
       <value>
@@ -762,11 +822,9 @@
       </field>
       <field>
         <name>InvoiceDate</name>
-        <rename/>
       </field>
       <field>
         <name>CustomerId</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -798,7 +856,6 @@
     <fields>
       <field>
         <name>InvoiceLineId</name>
-        <rename/>
       </field>
       <field>
         <name>InvoiceId</name>
@@ -806,15 +863,12 @@
       </field>
       <field>
         <name>Quantity</name>
-        <rename/>
       </field>
       <field>
         <name>UnitPrice</name>
-        <rename/>
       </field>
       <field>
         <name>TrackId</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1095,66 +1149,6 @@ FROM Chinook.InvoiceLine
     <GUI>
       <xloc>80</xloc>
       <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database lookup</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>Chinook_dw</connection>
-    <cache>N</cache>
-    <cache_load_all>N</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>Chinook_dw</schema>
-      <table>dim_customer</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>CustomerId</name>
-        <field>CustomerId</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>InvoiceDate</name>
-        <field>Date_from</field>
-        <condition>&lt;=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>InvoiceDate</name>
-        <field>Date_to</field>
-        <condition>&gt;</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>CustomerKey</name>
-        <rename>CustomerKey</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
