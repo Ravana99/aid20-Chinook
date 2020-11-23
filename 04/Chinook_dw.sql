@@ -18,7 +18,11 @@ create table dim_customer (
 	CustomerName varchar(255),
 	City varchar(255),
 	Country varchar(255),
-	primary key (CustomerId)
+	CustomerKey int,
+	Version int,
+	Date_from datetime,
+	Date_to datetime,
+	primary key (CustomerKey)
 );
 
 create table dim_time (
@@ -37,10 +41,10 @@ create table fact_sales (
     UnitPrice decimal(10,2),
     LineTotal decimal(10,2),
     TrackId int,
-    CustomerId int,
+    CustomerKey int,
     TimeId datetime,
     primary key (InvoiceId, InvoiceLineId),
     foreign key (TrackId) references dim_track(TrackId),
-    foreign key (CustomerId) references dim_customer(CustomerId),
+    foreign key (CustomerKey) references dim_customer(CustomerKey),
     foreign key (TimeId) references dim_time(TimeId)
 );
