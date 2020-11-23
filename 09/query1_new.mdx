@@ -1,0 +1,4 @@
+SELECT
+NON EMPTY Time.Year.Members * Measures.Sales ON COLUMNS,
+NON EMPTY Customer.Country.Members * Track.Artist.Members ON ROWS
+FROM Sales

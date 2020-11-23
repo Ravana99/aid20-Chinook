@@ -1,0 +1,4 @@
+SELECT
+NON EMPTY DRILLDOWNLEVEL(Time.[All Years]) * Measures.Members ON COLUMNS,
+NON EMPTY TopCount(Customer.Country.Members, 10, Measures.Sales) ON ROWS
+FROM Sales

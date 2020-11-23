@@ -1,0 +1,11 @@
+WITH
+SET [~COLUMNS] AS
+    {[Time].[Time Hierarchy].[Year].Members}
+SET [~ROWS_Customer_Customer Hierarchy] AS
+    {[Customer].[Customer Hierarchy].[Country].Members}
+SET [~ROWS_Track_Track Hierarchy] AS
+    {[Track].[Track Hierarchy].[Artist].Members}
+SELECT
+NON EMPTY CrossJoin([~COLUMNS], {[Measures].[Sales]}) ON COLUMNS,
+NON EMPTY NonEmptyCrossJoin([~ROWS_Customer_Customer Hierarchy], [~ROWS_Track_Track Hierarchy]) ON ROWS
+FROM [Sales]
