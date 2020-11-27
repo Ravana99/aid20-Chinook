@@ -3,7 +3,7 @@
     <job-metadata>
         <job-description>Created with DataCleaner Community edition 5.4.0</job-description>
         <author>aid</author>
-        <updated-date>2020-11-12Z</updated-date>
+        <updated-date>2020-11-27Z</updated-date>
         <metadata-properties>
             <property name="CoordinatesX.Chinook.Customer">117</property>
             <property name="CoordinatesY.Chinook.Customer">164</property>
@@ -101,6 +101,7 @@
                 <property name="Bottom n most frequent values" value="&lt;null&gt;"/>
             </properties>
             <input ref="col_country" name="Column"/>
+            <input ref="col_city" name="Column"/>
         </analyzer>
     </analysis>
 </job>
